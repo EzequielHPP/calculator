@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import 'components/variables';
+
+body {
+  background-color: $bodyBgColor;
+}
+.calculator {
+  position: absolute;
+  width: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $calculatorBackground;
+  border-radius: $borderRadius;
+  padding: 25px;
+  box-sizing: border-box;
+
+  box-shadow:  5px 5px 10px #636363,
+  -5px -5px 10px #ffffff;
+
+  .calculator--display {
+    display: block;
+    border-radius: $borderRadius;
+    border: 1px solid $displayBorder;
+    background-color: $displayBackground;
+    height: 50px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+
+    input {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: right;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      line-height: 50px;
+      color: $displayText;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+      font-family: 'Press Start 2P', cursive;
+
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+
+  .calculator--numbers,
+  .calculator--numbers--numpad {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+  }
+
+  .calculator--numbers{
+    margin-top: 10px;
+    gap:$buttonGaps;
+    align-content: flex-start;
+  }
+
+  .calculator--numbers--numpad {
+    width: calc(80% - #{$buttonGaps});
+    gap: $buttonGaps;
+    flex-direction: row-reverse;
+  }
+
+  .number-holder {
+    flex: 1 1 calc(33.3% - 5px);
+    align-self: auto;
+    text-align: center;
+    padding: $buttonGaps;
+    box-sizing: border-box;
+    background-color: $buttonBackground;
+    color: $buttonText;
+    border-radius: $borderRadius;
+    line-height: 20px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $actionButtonBackground;
+    }
+  }
+
+  .number-action {
+    background-color: $actionButtonBackground;
+    color: $actionButtonText;
+
+    &:hover {
+      background-color: $buttonBackground;
+    }
+  }
+
+  .calculator--numbers--actions {
+    width: calc(20% - #{$buttonGaps});
+    gap: $buttonGaps;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+
+    .number-action {
+      flex: 0 1 100%;
+      align-self: auto;
+    }
+  }
+}

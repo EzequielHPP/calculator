@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block title %}Calculator for Mr&Mrs Smith{% endblock %}
+{% block body %}
+    <h1>Calculator</h1>
+
+    <form action="{{ path('calculator_post') }}" enctype="text/plain" method="post">
+        <div class="calculator" data-controller="calculator">
+            <div class="calculator--display">
+                <input id="display" data-calculator-target="display" type="text" placeholder="0" name="calculation" data-action="keydown->calculator#checkManualInput" pattern="[0-9.\/\*\-\+]" required>
+            </div>
+            <div class="calculator--numbers">
+                <div class="calculator--numbers--numpad">
+                    {% for i in 9..1 %}
+                        <button class="number-holder" type="button" data-action="click->calculator#addNumber"
+                                value="{{ i }}">{{ i }}</button>
+                    {% endfor %}
+                    <button class="number-holder number-action" type="submit" data-action="click->calculator#result">=
+                    </button>
+                    <button class="number-holder" type="button" data-action="click->calculator#addNumber" value=".">.
+                    </button>
+                    <button class="number-holder" type="button" data-action="click->calculator#addNumber"
+                            value="{{ 0 }}">{{ 0 }}</button>
+                </div>
+                <div class="calculator--numbers--actions">
+                    <button class="number-holder number-action" type="button" data-action="click->calculator#addOperand"
+                            data-actionValue="/">➗
+                    </button>
+                    <button class="number-holder number-action" type="button" data-action="click->calculator#addOperand"
+                            data-actionValue="*">✖️
+                    </button>
+                    <button class="number-holder number-action" type="button" data-action="click->calculator#addOperand"
+                            data-actionValue="-">➖
+                    </button>
+                    <button class="number-holder number-action" type="button" data-action="click->calculator#addOperand"
+                            data-actionValue="+">➕
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
