@@ -2,7 +2,7 @@
 
 namespace App\Tests\Service;
 
-use App\Service\CalculatorService;
+use App\Service\v1\CalculatorService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 

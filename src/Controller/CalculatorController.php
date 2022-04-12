@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller\v1;
+namespace App\Controller;
 
-use App\Service\CalculatorService;
+use App\Service\v1\CalculatorService as v1CalculatorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class CalculatorController extends AbstractController
      */
     final public function postCalculator(Request $request): Response
     {
-        $calculation = (new CalculatorService($request))->calculate();
+        $calculation = (new v1CalculatorService($request))->calculate();
         return $this->json([
             'status' => $calculation !== 'NAN',
             'response' => $calculation

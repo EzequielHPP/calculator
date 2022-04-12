@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\v1;
 
 use App\Helpers\LogHelper;
 use Symfony\Component\HttpFoundation\Request;
@@ -98,6 +98,8 @@ final class CalculatorService
     private function executeCalculation(string $calculation): float
     {
         $cleanedCalculation = $this->cleanInput($calculation);
+        // Eval has its security issues, so it shouldn't be really used
+        // But for this instance it is fine, as I'm sanitizing the input and gives it less memory consumption
         return empty($cleanedCalculation) ? 0 : eval('return ' . $cleanedCalculation . ';');
     }
 }
